@@ -1,0 +1,18 @@
+<form action="/recipes/<%= @recipe.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="id" value="<%= @recipe.id %>">
+  <div class="form-group">
+    <label for="recipe_name">New Recipe Name</label>
+    <input type="text" class="form-control" name="recipe_name" value="<%= @recipe.recipe_name %>">
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-md">Edit</button>
+</form>
+
+
+<!-- for each ingredient in THIS recipe do print out the name of the ingredient -->
+<ul>
+  <% @recipe.ingredients.all do |i| %>
+  <li><@= i.ingredient_name %></li>
+ <% end %>
+ </ul>

@@ -1,0 +1,17 @@
+<h2>Recipe: <%= @recipes.recipe_name() %></h2>
+<h4>Instructions: <%=@recipes.instructions() %> </h2>
+<hr>
+
+<% if @recipes.ingredients.any? %>
+  <h3>Here are the ingredients for this recipe:</h3>
+  <ul>
+    <% @recipes.ingredients.each() do |ingredients_recipes| %>
+      <li><%= ingredients_recipes.ingredient_name %></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p><strong>There are currently no ingredients for this recipe.</strong></p>
+    <% end %>
+    <br>

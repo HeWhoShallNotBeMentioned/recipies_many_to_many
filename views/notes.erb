@@ -1,0 +1,13 @@
+<h4>Assign an ingredient to this recipe:</h4>
+<form id="update_ingredient_id" action="/recipes/<%= @recipe.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input type="hidden" name="recipe_id" id="recipe_id" value="<%= @recipe.id() %>">
+  <label for="project_select">Select the ingredient:  </label>
+    <br>
+  <select id="ingredient_id" name="ingredient_id">
+    <% @ingredient.each() do |ingredient| %>
+      <option value="<%= ingredient.id() %>"><%= ingredient.ingredient_name() %></option>
+    <% end %>
+  </select>
+  <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,44 @@
+<h2>Ingredients</h2>
+<hr>
+<br>
+
+<% if @ingredients == [] %>
+
+<p>There are currently no ingredients in the database</p>
+
+<% else %>
+
+<p>Current Ingredients</p>
+<ul>
+
+  <% @ingredients.each() do |ingredient| %>
+
+  <li><a href="/ingredients/<%= ingredient.id() %>"><%= ingredient.ingredient_name() %></a></li>
+
+  <% end %>
+
+</ul>
+
+<% end %>
+<h3> Add an ingredient: </h3>
+<form action="/ingredients" method="post">
+  <label for="ingredient_name">Ingredient Name:  </label>
+  <input type="text" name="ingredient_name" id="ingredient_name">
+  <button type="submit">Add Ingredient</button>
+</form>
+<table class="table">
+  <tr>
+    <th>Ingredient Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% if @ingredients %>
+  <% @ingredients.each do |ingredient| %>
+  <tr>
+    <td><a href="/ingredients/<%= ingredient.id %>"><%= ingredient.ingredient_name %></a></td>
+    <td><a href="/ingredients/<%= ingredient.id %>/edit">Edit</a></td>
+    <td><a href="/ingredients/<%= ingredient.id %>/delete">Delete</a></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
